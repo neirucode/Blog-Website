@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         postElement.classList.add('blog-post');
                         postElement.innerHTML =
                             `<div class="card">
-                                ${article.urlToImage ? src = "${article.urlToImage}" alt = "${article.title}" > ` : ''}
+                              ${article.urlToImage ? `<img src="${article.urlToImage}" alt="${article.title}">` : ''}
                                 <div class="card-content">
                                     <h2>${article.title}</h2>
                                     <p>${article.description || "No description available."}</p>

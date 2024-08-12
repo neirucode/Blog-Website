@@ -76,7 +76,15 @@
         <section>
             <h2 class="recents">Recently Added</h2>
             <div id="blog-posts" class="framer">
-                <!-- Blog posts will be appended here -->
+                <div class="card">
+                    <img src="" alt="">${article.urlToImage && src = "${article.urlToImage}" alt = "${article.title}" >
+                    ` : ''}
+                    <div class="card-content">
+                        <h2>${article.title}</h2>
+                        <p>${article.description || "No description available."}</p>
+                        <a href="${article.url}" target="_blank">Read more</a>
+                    </div>
+                </div>
             </div>
             <div class="more-btn">
                 <a class="btn" href="#"><span class="btn-txt">More Blogs</span><em class="line"></em></a>
