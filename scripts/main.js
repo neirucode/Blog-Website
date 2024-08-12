@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         postElement.classList.add('blog-post');
                         postElement.innerHTML =
                             `<div class="card">
-                                ${article.urlToImage ? `<img loading="lazy" src="${article.urlToImage}" alt="${article.title}">` : ''}
+                                ${article.urlToImage ? src = "${article.urlToImage}" alt = "${article.title}" > ` : ''}
                                 <div class="card-content">
                                     <h2>${article.title}</h2>
                                     <p>${article.description || "No description available."}</p>
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         shuffledArticles.forEach(article => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `
-                <img loading="lazy" src="${article.urlToImage}" alt="${article.title}">
+                <img src="${article.urlToImage}" alt="${article.title}">
                 <div class="overlays">
                     <p>Featured Blog</p>
                     <h3>${article.title}</h3>
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
         shuffledArticles.forEach(article => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `
-                <img loading="lazy" src="${article.urlToImage}" alt="${article.title}">
+                <img src="${article.urlToImage}" alt="${article.title}">
                 <div class="overlays">
                     <p>Featured Blog</p>
                     <h3>${article.title}</h3>
