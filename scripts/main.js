@@ -1,7 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const apiKey = '8093ceccff3b468a95d7d1fc85a5928e'; // Replace with your actual API key
-    const blogPostsUrl = `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${apiKey}`;
 
+
+
+
+
+
+    // Replace with your Unsplash Access Key
+    const accessKey = 'GfG6ZQW8sZ5nVBikAHEVYgvVSkcyzvc3Io8RxWMfvKA';
+    const query = 'architecture'; // You can change this to any keyword you like
+    const unsplashUrl = `https://api.unsplash.com/search/photos?query=${query}&client_id=${accessKey}&per_page=10`;
+
+    // Container elements
     const blogPostsContainer = document.getElementById('blog-posts');
     const featuredBlogsContainer = document.querySelector('#featured-blogs .scroller__inner');
 
@@ -16,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function loadBlogPosts() {
-        fetch(blogPostsUrl)
+        fetch(unsplashUrl)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
@@ -24,68 +33,69 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then(data => {
-                console.log('Blog posts fetched:', data); // Log the fetched data for debugging
+                console.log('Photos fetched:', data); // Log the fetched data for debugging
 
-                if (data.status === "ok" && data.articles.length > 0) {
-                    // Limit the number of displayed articles to 4
-                    const limitedArticles = data.articles.slice(0, 4);
+                if (data.results.length > 0) {
+                    // Limit the number of displayed photos to 4
+                    const limitedPhotos = data.results.slice(0, 4);
 
-                    limitedArticles.forEach(article => {
+                    limitedPhotos.forEach(photo => {
                         const postElement = document.createElement('div');
                         postElement.classList.add('blog-post');
                         postElement.innerHTML =
                             `<div class="card">
-                              ${article.urlToImage ? `<img src="${article.urlToImage}" alt="${article.title}">` : ''}
-                                <div class="card-content">
-                                    <h2>${article.title}</h2>
-                                    <p>${article.description || "No description available."}</p>
-                                    <a href="${article.url}" target="_blank">Read more</a>
-                                </div>
-                            </div>`;
+                            <img src="${photo.urls.regular}" alt="${photo.alt_description}">
+                            <div class="card-content">
+                                <h2>${photo.alt_description || "No title available"}</h2>
+                                <p>Photo by ${photo.user.name}</p>
+                                <a href="${photo.links.html}" target="_blank">View on Unsplash</a>
+                            </div>
+                        </div>`;
                         blogPostsContainer.appendChild(postElement);
                     });
 
                     // Load featured blogs (images only) from the same data
-                    loadFeaturedBlogs(data.articles);
+                    loadFeaturedBlogs(data.results);
                 } else {
-                    blogPostsContainer.innerHTML = '<p>No articles found.</p>';
+                    blogPostsContainer.innerHTML = '<p>No photos found.</p>';
                 }
             })
-            .catch(error => console.error('Error fetching blog posts:', error));
+            .catch(error => console.error('Error fetching photos:', error));
     }
 
-    function loadFeaturedBlogs(articles) {
+    function loadFeaturedBlogs(photos) {
         const numImages = 5;
-        const shuffledArticles = articles.sort(() => 0.5 - Math.random()).slice(0, numImages);
+        const shuffledPhotos = photos.sort(() => 0.5 - Math.random()).slice(0, numImages);
 
-        const featuredBlogsContainer = document.querySelector('.scroller__inner');
         featuredBlogsContainer.innerHTML = ''; // Clear previous content
 
-        shuffledArticles.forEach(article => {
+        shuffledPhotos.forEach(photo => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `
-                <img src="${article.urlToImage}" alt="${article.title}">
-                <div class="overlays">
-                    <p>Featured Blog</p>
-                    <h3>${article.title}</h3>
-                </div>`;
+            <img src="${photo.urls.small}" alt="${photo.alt_description}">
+            <div class="overlays">
+                <p>Featured Blog</p>
+                <h3>${photo.alt_description || "No title available"}</h3>
+            </div>`;
             featuredBlogsContainer.appendChild(listItem);
         });
 
         // Duplicate the items for seamless scrolling
-        shuffledArticles.forEach(article => {
+        shuffledPhotos.forEach(photo => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `
-                <img src="${article.urlToImage}" alt="${article.title}">
-                <div class="overlays">
-                    <p>Featured Blog</p>
-                    <h3>${article.title}</h3>
-                </div>`;
+            <img src="${photo.urls.small}" alt="${photo.alt_description}">
+            <div class="overlays">
+                <p>Featured Blog</p>
+                <h3>${photo.alt_description || "No title available"}</h3>
+            </div>`;
             featuredBlogsContainer.appendChild(listItem);
         });
     }
 
+    // Load the blog posts when the page loads
     loadBlogPosts();
+
 
     document.getElementById('hamburger').addEventListener('click', function () {
         const navLinks = document.querySelector('.nav__links');
