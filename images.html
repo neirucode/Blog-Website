@@ -26,9 +26,9 @@
         </div>
         <nav class="nav__links">
             <ul>
-                <li><a href="images.html" data-category="All"><span class="material-symbols-rounded">
-                            article
-                        </span> All Images</a></li>
+                <li><a href="index.html" data-category="All"><span class="material-symbols-rounded">
+                            house
+                        </span> Home</a></li>
                 <li class="dropdown">
                     <span class="material-symbols-rounded">
                         category
@@ -45,7 +45,7 @@
                         </li>
                     </ul>
                 </li>
-                <a><button class="button" href="#">Get Free Template</button></a>
+                <a><button class="button" href="#">Send me a coffee ☕</button></a>
             </ul>
         </nav>
         <!-- Hamburger Icon -->
@@ -63,59 +63,28 @@
         </div>
     </div>
 
-    <div class="featured-container">
-        <section id="featured-blogs" class="scroller">
-            <ul class="scroller__inner">
-            </ul>
-        </section>
-    </div>
-
     <div class="framer-container">
         <section>
-            <h2 class="recents">Recently Added</h2>
-            <div id="blog-posts" class="framer">
+            <div class="categories">
+                <a class="category-btn" data-category="All">All</a>
+                <a class="category-btn" data-category="Science">Science</a>
+                <a class="category-btn" data-category="Technology">Technology</a>
+                <a class="category-btn" data-category="Architecture">Architecture</a>
+                <a class="category-btn" data-category="Arts">Arts</a>
             </div>
-            <div class="more-btn">
-                <a class="btn" href="Blogs.html"><span class="btn-txt">More Blogs</span><em class="line"></em></a>
+            <div id="all-blog-posts" class="category-grid">
+                <!-- <div class="card">
+                    <img src="" alt="">${article.urlToImage && src = "${article.urlToImage}" alt = "${article.title}" >
+                    ` : ''}
+                    <div class="card-content">
+                        <h2>${article.title}</h2>
+                        <p>${article.description || "No description available."}</p>
+                        <a href="${article.url}" target="_blank">Read more</a>
+                    </div>
+                </div> -->
             </div>
         </section>
-        <!-- category -->
-        <section>
-            <div>
-                <h2 class="recents">Current Trends</h2>
-            </div>
 
-            <div class="category-grid">
-                <div class="category-item item1">
-                    <img loading="lazy">
-                    <div class="content">
-                        <h3></h3>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="category-item item2">
-                    <img loading="lazy">
-                    <div class="content">
-                        <h3>Landscape</h3>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="category-item item3">
-                    <img loading="lazy">
-                    <div class="content">
-                        <h3></h3>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="category-item item4">
-                    <img loading="lazy">
-                    <div class="content">
-                        <h3></h3>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        </section>
         <footer>
             <div class="footer-container">
                 <div class="footer-box">
@@ -129,22 +98,23 @@
                     <a href="">123@gaml.com</a>
                 </div>
                 <div class="footer-box">
-                    <h4>Trending:</h4>
-                    <div class="mini-card mini-card1">
+                    <h4>Trending: <em>Travel blogs</em>
+                    </h4>
+                    <div class="mini-card">
                         <img loading="lazy" src="images/1.jpg" alt="image">
                         <div class="footer-box-content">
                             <h3>160 Flatevad Ulsic, Norway</h3>
                             <p>08/11/2024</p>
                         </div>
                     </div>
-                    <div class="mini-card mini-card2">
+                    <div class="mini-card">
                         <img loading="lazy" src="images/2.jpg" alt="image">
                         <div class="footer-box-content">
                             <h3>No. 6 Sydney Street Apartments</h3>
                             <p>08/10/2024</p>
                         </div>
                     </div>
-                    <div class="mini-card mini-card3">
+                    <div class="mini-card">
                         <img loading="lazy" src="images/3.jpg" alt="image">
                         <div class="footer-box-content">
                             <h3>8500 Beverly Blvd
