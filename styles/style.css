@@ -62,14 +62,14 @@ header:hover .button {
 
 .logo-container {
     position: relative;
-    opacity: 1;
+    min-width: min-content;
+    line-height: 40px;
     margin: 0 10px;
     cursor: pointer;
 }
 
 .logo {
     height: 40px;
-    overflow: visible;
 }
 
 .logo-text {
