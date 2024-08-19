@@ -126,9 +126,6 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchFooterCard('gaming', '.minicard2');
     fetchFooterCard('wildlife', '.minicard');
 
-
-
-
     // Function for loading featured blogs
     function loadFeaturedBlogs(photos) {
         const numImages = 5;
